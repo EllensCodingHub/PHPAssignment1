@@ -1,0 +1,86 @@
+body {
+  font-family: Arial, sans-serif;
+  background: #f2f4f8;
+  margin: 0;
+  padding: 20px;
+}
+main {
+  display: block;
+  margin: 0 auto;
+  padding: 1em;
+  background: #F5F0E6;
+  color: #272326;
+  border: 2px solid #000080;
+}
+#agentList {
+  width: 1500px;
+}
+#addQuery {
+  width: 700px;
+  background: #F5F0E6;
+  color: #272326;
+}
+h1 {
+  margin-top: 0;
+  color: #000080;
+  text-align: center;
+}
+h2 {
+  text-align: center;
+  color: #39B82A;
+}
+table {
+  width: 100%;
+  background: #FFFEFA;
+  border-collapse: collapse;
+  text-align: center;
+}
+#addQuery table {
+  width: 75%;
+}
+th, td {
+  padding: 10px;
+  border: 1px solid #ccc;
+  text-align: center;
+  vertical-align: middle;
+}
+#agentList table, th, td {
+  background-color: #fff;
+}
+th:nth-child(1),
+td:nth-child(1) {
+  width: 100px;
+}
+th:nth-child(2),
+td:nth-child(2) {
+  width: 190px;
+}
+th:nth-child(3),
+td:nth-child(3) {
+  width: 125px;
+}
+th:nth-child(6),
+td:nth-child(6) {
+  width: 100px;
+}
+label {
+  width: 10em;
+  float: left;
+  padding-right: 1em;
+  padding-bottom: 0.5em;
+}
+#data input {
+  float: left;
+  width: 15em;
+  margin-bottom: 0.5em;
+}
+#data span {
+  padding: 0.25em;
+}
+br {
+  clear: left;
+}
+#data, #buttons {
+  width: 27em;
+  margin: 0 auto;
+}
