@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Query Tracker - Database Error</title>
+    <title>Submission Tracker - Database Error</title>
     <link rel="stylesheet" type="text/css" href="query.css"/>
   </head>
   <body>
@@ -15,7 +15,7 @@
       <p>The database must be installed.</p>
       <p>MySQL must be running.</p>
       <p>Error Message: <?php echo $_SESSION["database_error"]; ?></p>
-      <p><a href="index.php">View Agent List</a></p>
+      <p><a href="index.php">View Submission List</a></p>
     </main>
     <?php include("footer.php"); ?>
   </body>

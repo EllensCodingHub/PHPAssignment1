@@ -16,7 +16,7 @@
   // Validation will be added later to ensure no null data and no duplicates
 
   // Add query
-  $sql = 'INSERT INTO queries (submissionDate, agencyName, agentName, emailAddress, 
+  $sql = 'INSERT INTO submissions (submissionDate, agencyName, agentName, emailAddress, 
   websiteAddress, phoneNumber, response, feedback)
   VALUES (:submissionDate, :agencyName, :agentName, :emailAddress, :websiteAddress,
   :phoneNumber, :response, :feedback)';
@@ -35,7 +35,7 @@
   $statement->execute();
   $statement->closeCursor();
 
-  $url = "add_query_confirmation.php";
+  $url = "add_submission_confirmation.php";
   header("Location: " . $url);
   die();
 

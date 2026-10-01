@@ -2,16 +2,16 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Query Tracker - Add Query</title>
-    <link rel="stylesheet" type="text/css" href="css/query.css" />
+    <title>Submission Tracker - Add Submission</title>
+    <link rel="stylesheet" type="text/css" href="css/submission.css" />
   </head>
   <body>
     <?php include("header.php"); ?>
-    <main id="addQuery">
-      <h2>Add Query</h2>
-      <form action="add_query.php" method="post" id="add_query_form" enctype="multipart/form-data">
+    <main id="addSubmission">
+      <h2>Add Submission</h2>
+      <form action="add_submission.php" method="post" id="add_submission_form" enctype="multipart/form-data">
       
-      <p><a href="index.php">View Agent List</a></p>
+      <p><a href="index.php">View Submission List</a></p>
       <div id="data">
         
         <label>Date:</label>
@@ -36,7 +36,7 @@
       <div id="buttons">
 
         <label>&nbsp;</label>
-        <input type="submit" value="Save Query"/><br/>
+        <input type="submit" value="Save Submission"/><br/>
 
     </div>
     </form>
