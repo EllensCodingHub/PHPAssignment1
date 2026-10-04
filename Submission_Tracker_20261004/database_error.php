@@ -5,7 +5,7 @@
 <html>
   <head>
     <title>Submission Tracker - Database Error</title>
-    <link rel="stylesheet" type="text/css" href="query.css"/>
+    <link rel="stylesheet" type="text/css" href="css/submission.css"/>
   </head>
   <body>
     <?php include("header.php"); ?>
