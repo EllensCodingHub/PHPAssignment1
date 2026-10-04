@@ -1,10 +1,10 @@
 <?php 
   require("database.php");
 
-  $querySubmissions = 'SELECT s.submissionDate, s.submissionID, s.agencyName, s.agentName, s.emailAddress,
-  s.websiteAddress, s.phoneNumber, s.response, s.feedback, s.statusType
+  $querySubmissions = 'SELECT s.submissionDate, s.submissionID, s.agencyName, s.imageName, s.agentName, s.emailAddress,
+  s.websiteAddress, s.phoneNumber, s.feedback, t.statusType
   FROM submissions s
-  LEFT JOIN statusTypes t ON s.statusTypeID = t.statusTypeID';
+  LEFT JOIN status_types t ON s.statusID = t.statusID';
 
   $statement = $db->prepare($querySubmissions);
   $statement->execute();
@@ -27,34 +27,33 @@
         <tr>
           <th>Date</th>
           <th>Agency</th>
+          <th>Agent Photo</th>
           <th>Agent</th>
           <th>Email</th>
           <th>Website</th>
           <th>Phone</th>
-          <th>Response Y/N</th>
           <th>Feedback</th>
-          <th>Submission Type</th>
-          <th>Agent Photo</th>
+          <th>Status</th>
           <th>Update</th> <!-- for update -->
           <th>&nbsp;</th> <!-- for delete -->
         </tr>
         <?php foreach ($submissions as $submission): ?>
           <tr>
             <td><?php echo htmlspecialchars($submission['submissionDate']); ?></td>
-            <td><?php echo htmlspecialchars($submission['submissionID']); ?></td>
             <td><?php echo htmlspecialchars($submission['agencyName']); ?></td>
+
+            <td>
+              <img src="<?php echo htmlspecialchars('./images/' . $submission['imageName']); ?>"
+              alt="<?php echo htmlspecialchars($submission['agentName'] . ' photo'); ?>" />
+              </td>
+              
             <td><?php echo htmlspecialchars($submission['agentName']); ?></td>
             <td><?php echo htmlspecialchars($submission['emailAddress']); ?></td>
             <td><?php echo htmlspecialchars($submission['websiteAddress']); ?></td>
             <td><?php echo htmlspecialchars($submission['phoneNumber']); ?></td>
-            <td><?php echo htmlspecialchars($submission['response']); ?></td>
             <td><?php echo htmlspecialchars($submission['feedback']); ?></td>
             <td><?php echo htmlspecialchars($submission['statusType']); ?></td>
-            
-            <td>
-              <img src="<?php echo htmlspecialchars('./images/' . $submission['imageName']); ?>"
-              alt="<?php echo htmlspecialchars($submission['agentName'] . ' ' . $submission['agencyName']); ?>" />
-              </td>
+
             
             <td>
               <form action="update_submission_form.php" method="post">

@@ -4,7 +4,7 @@
 
   require_once("database.php");
 
-  $queryStatusTypes = 'SELECT * FROM statusTypes';
+  $queryStatusTypes = 'SELECT * FROM status_types';
 
   $statement = $db->prepare($queryStatusTypes);
   $statement->execute();
@@ -46,20 +46,15 @@
         <label>Phone:</label>
         <input type="text" name="phone_number"/><br/>
         
-        <label>Response? Y/N:</label>
-        <input type="text" name="response"/><br/>
-        
         <label>Feedback:</label>
         <input type="text" name="feedback"/><br/>
 
-        
         <label>Status:</label>
         <select name="status_id"> 
-          <?php foreach($statusTypes as $status):?>
+          <?php foreach($statusTypes as $status): ?>
 
               <option value="<?php echo $status['statusID']; ?>">
-              <?php if ($status['statusID'] == $submission['statusID']) echo 'selected';?> >  
-              <?php echo $status['statusType']; ?>
+                <?php echo $status['statusType']; ?>
               </option>
             
           <?php endforeach; ?>

@@ -17,7 +17,7 @@
   $statement->closeCursor();
 
   // get submission status
-  $queryStatusTypes = 'SELECT * FROM statusTypes';
+  $queryStatusTypes = 'SELECT * FROM status_types';
 
     $statement = $db->prepare($queryStatusTypes);
     $statement->execute();
@@ -40,7 +40,9 @@
       <h2>Update Submission</h2>
       <form action="update_submission.php" method="post" id="update_submission_form" enctype="multipart/form-data">
         <input type="hidden" name="submission_id" value="<?php echo $submission["submissionID"]; ?>" />
-      
+        
+        <input type="hidden" name="image_name" value="<?php echo $submission['imageName']; ?>" />
+
         <div id="data">
 
           <label>Date:</label>
@@ -61,9 +63,6 @@
           <label>Phone</label>
           <input type="text" name="phone_number" value="<?php echo $submission["phoneNumber"] ?>"><br/>
           
-          <label>Response? Y/N</label>
-          <input type="text" name="response" value="<?php echo $submission["response"] ?>"><br/>
-
           <label>Feedback</label>
           <input type="text" name="feedback" value="<?php echo $submission["feedback"] ?>"><br/>
           

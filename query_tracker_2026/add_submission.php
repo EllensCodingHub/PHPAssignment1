@@ -1,23 +1,26 @@
 <?php 
+
+  ini_set('display_errors', 1);
+  error_reporting(E_ALL);
+
   session_start();
 
   // get data from form and assign variables
   $submission_id = filter_input(INPUT_POST, 'submission_id');
   $submission_date = filter_input(INPUT_POST, 'submission_date');
   $agency_name = filter_input(INPUT_POST, 'agency_name');
+  $image = $_FILES['file1'];
   $agent_name = filter_input(INPUT_POST, 'agent_name');
   $email_address = filter_input(INPUT_POST, 'email_address');
   $website_address = filter_input(INPUT_POST, 'website_address');
   $phone_number = filter_input(INPUT_POST, 'phone_number');
-  $response = filter_input(INPUT_POST, 'response');
   $feedback = filter_input(INPUT_POST, 'feedback');
-  $feedback = filter_input(INPUT_POST, 'feedback');
-  $image = $_FILES['file1'];
+  $status = filter_input(INPUT_POST, 'status_id');
 
   require_once("database.php"); // require_once prevents duplicate connections to database
   require_once("image_util.php"); // for image processing functions
 
-  $base_dir = 'images/';
+  $base_dir = './images/';
 
   // Validation will be added later to ensure no null data and no duplicates
 
@@ -55,7 +58,10 @@
     // process new image
     $original_filename = basename($image['name']);
     $upload_path = $base_dir . $original_filename;
-    move_uploaded_file($image['tmp_name'], $upload_path);
+
+    if (!move_uploaded_file($image['tmp_name'], $upload_path)) {
+      die('Could not move uploaded file to: ' . $upload_path);
+}
 
     process_image($base_dir, $original_filename);
 
@@ -81,28 +87,28 @@
 
   // add contact
 
-  $query = 'INSERT INTO submissions (submissionDate, agencyName, agentName, emailAddress, 
-  websiteAddress, phoneNumber, response, feedback, imageName)
-  VALUES (:submissionDate, :agencyName, :agentName, :emailAddress, :websiteAddress,
-  :phoneNumber, :response, :feedback, :submissionID, :imageName)';
+  $query = 'INSERT INTO submissions (submissionDate, submissionID, agencyName, imageName, agentName, emailAddress, 
+  websiteAddress, phoneNumber, feedback, statusID)
+  VALUES (:submissionDate, :submissionID, :agencyName, :imageName, :agentName, :emailAddress, :websiteAddress,
+  :phoneNumber, :feedback, :statusID)';
 
   $statement = $db->prepare($query); // matches 'INSERT INTO' query syntax
 
   $statement->bindValue(':submissionID', $submission_id);
   $statement->bindValue(':submissionDate', $submission_date); // VALUE, $variable
   $statement->bindValue(':agencyName', $agency_name);
+  $statement->bindValue(':imageName', $image_name);
   $statement->bindValue(':agentName', $agent_name);
   $statement->bindValue(':emailAddress', $email_address);
   $statement->bindValue(':websiteAddress', $website_address);
   $statement->bindValue(':phoneNumber', $phone_number);
-  $statement->bindValue(':response', $response);
   $statement->bindValue(':feedback', $feedback);
-  $statement->bindValue(':imageName', $image_name);
+  $statement->bindValue(':statusID', $status);
 
   $statement->execute();
   $statement->closeCursor();
 
-  $_SESSION["fullName"] = $first_name . " " . $last_name;
+  $_SESSION["fullName"] = $agent_name . " ";
   $url = "add_submission_confirmation.php";
   header("Location: " . $url);
   die();

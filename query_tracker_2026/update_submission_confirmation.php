@@ -17,8 +17,8 @@
       <h2>Update Submission Confirmation</h2>
 
       <p>
-        Thank you. Your submission to <?php echo $_SESSION["agentName"]; ?> has been
-        successfully added to your tracker. 
+        Thank you. Your submission to <?php echo $_SESSION["agent_name"]; ?> has been
+        successfully updated. 
       </p>
       <p><a href="index.php">View Submission List</a></p>
     </main>

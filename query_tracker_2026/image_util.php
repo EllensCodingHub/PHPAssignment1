@@ -4,7 +4,7 @@ function process_image($dir, $filename) {
   // set up the variables
   $dir = $dir . DIRECTORY_SEPARATOR;
   $i = strrpos($filename, '.');
-  $image_name = substr($filename, 0, $i_);
+  $image_name = substr($filename, 0, $i);
   $ext = substr($filename, $i);
 
   // set up the read path
@@ -46,13 +46,13 @@ function resize_image($old_image_path, $new_image_path,
           $image_to_file = 'imagepng';
           break;
       default:
-          echo 'File must be a JPEG, GIF, or PNG image.' .$image_type;
+          echo 'File must be a JPEG, GIF, or PNG image.'.$image_type;
           exit;
     }
 
     // get the old image and its height and width
     $old_image = $image_from_file($old_image_path);
-    $old_image = imagesx($old_image);
+    $old_width = imagesx($old_image);
     $old_height = imagesy($old_image);
 
     // calculate height and width ratios
@@ -75,7 +75,7 @@ function resize_image($old_image_path, $new_image_path,
           $alpha = imagecolorallocatealpha($new_image, 0, 0, 0, 127);
           imagecolortransparent($new_image, $alpha);
         }
-        if ($image_type == IMAGETYPE.PNG || $image_type == IMAGETYPE_GIF) {
+        if ($image_type == IMAGETYPE_PNG || $image_type == IMAGETYPE_GIF) {
           imagealphablending($new_image, false);
           imagesavealpha($new_image, true);
         }
@@ -85,7 +85,7 @@ function resize_image($old_image_path, $new_image_path,
         $new_y = 0;
         $old_x = 0;
         $old_y = 0;
-        imagecopyresampled(new_image, $old_image,
+        imagecopyresampled($new_image, $old_image,
                           $new_x, $new_y,
                           $old_x, $old_y,
                           $new_width, $new_height,
