@@ -1,6 +1,6 @@
 <?php 
   session_start();
-  $dsn = 'mysql:host=localhost;dbname=php_assignment2';
+  $dsn = 'mysql:host=localhost;dbname=query_tracker_2026';
   $username = 'root';
   $password = '';
 
