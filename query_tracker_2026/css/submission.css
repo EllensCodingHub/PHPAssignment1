@@ -4,6 +4,46 @@ body {
   margin: 0;
   padding: 20px;
 }
+.container {
+  max-width: 600px;
+  margin: 0 auto;
+  background: #F5F0E6;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+.container h2 {
+  margin-bottom: 20px;
+  color: #272326;
+}
+.submission-image {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+.submission-info {
+  text-align: center;
+}
+.submission-info p {
+  margin: 8px 0;
+  font-size: 16px;
+  color: #272326;
+} 
+.back-link {
+  display: inline-block;
+  margin-top: 25px;
+  padding: 10px 16px;
+  background-color: #0077cc;
+  color: #F5F0E6;
+  text-decoration: none;
+  border-radius: 6px;
+  transition: background-color 0.3 ease;
+}
+.back-link:hover {
+  background-color: #000080;
+}
 main {
   display: block;
   margin: 0 auto;

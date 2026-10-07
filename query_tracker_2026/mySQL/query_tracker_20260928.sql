@@ -28,7 +28,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `submissions` (
-  `contactID` int(11) NOT NULL,
+  `submissionID` int(11) NOT NULL,
   `submissionDate` date NOT NULL,
   `agencyName` varchar(50) NOT NULL,
   `agentName` varchar(50) NOT NULL,
@@ -43,7 +43,7 @@ CREATE TABLE `submissions` (
 -- Dumping data for table `submissions`
 --
 
-INSERT INTO `submissions` (`contactID`, `submissionDate`, `agencyName`, `agentName`, `emailAddress`, `websiteAddress`, `phoneNumber`, `response`, `feedback`) VALUES
+INSERT INTO `submissions` (`submissionID`, `submissionDate`, `agencyName`, `agentName`, `emailAddress`, `websiteAddress`, `phoneNumber`, `response`, `feedback`) VALUES
 (1, '2026-09-24', 'Riptide Literary Agency', 'Nick Ryder', 'nryder@riptideliterary.com', 'riptideliterary.com', '555-555-5555', NULL, NULL),
 (2, '2026-09-16', 'Tucker Coastal Literary', 'Tucker Bastien', 'tbastien@tuckercoastalliterary.com', 'tuckercoastalliterary.com', '555-555-9999', 'yes', 'Please send me your manuscript.'),
 (3, '2026-09-30', 'Bookends Literary Agency', 'Robert Bastien', 'rob@bookendslit.com', 'bookendslit.com', '555-555-4444', 'yes', 'I love it! Please send me your manuscript as soon as possible! I can\'t wait to read it!'),
@@ -59,7 +59,7 @@ INSERT INTO `submissions` (`contactID`, `submissionDate`, `agencyName`, `agentNa
 -- Indexes for table `submissions`
 --
 ALTER TABLE `submissions`
-  ADD PRIMARY KEY (`contactID`);
+  ADD PRIMARY KEY (`submissionID`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -69,7 +69,7 @@ ALTER TABLE `submissions`
 -- AUTO_INCREMENT for table `submissions`
 --
 ALTER TABLE `submissions`
-  MODIFY `contactID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `submissionID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -78,8 +78,20 @@
             <?php endforeach; ?>
           </select><br/>
 
-          <label>Upload Agent Photo</label>
-          <input type="file" name="file1"/><br/>
+          <?php if (!empty($submission['imageName'])): ?>
+            <label>Current Image:</label>
+            <img src="images/<?php echo htmlspecialchars($submission['imageName']); ?>" 
+              alt="<?php echo htmlspecialchars($submission['agentName']); ?>"
+              height="100" /><br/>
+          <?php endif; ?>
+
+          <label for="agent_photo">Update Agent Photo</label>
+          <input type="file" name="file1" id="agent_photo" accept=".jpg, .jpeg, .png, .gif"/><br/>
+
+          <div id="preview_container" hidden>
+            <label>New Image Preview:</label>
+            <img id="image_preview" alt="Selected agent photo" height="100"/><br/>
+          </div>
 
         </div>
 
@@ -89,6 +101,34 @@
       </div>
 
       </form>
+
+      <script>
+
+        const photoInput = document.getElementById('agent_photo');
+        const imagePreview = document.getElementById('image_preview');
+        const previewContainer = document.getElementById('preview_container');
+
+        photoInput.addEventListener('change', function () {
+          const file = photoInput.files[0];
+
+          previewContainer.hidden = true;
+          imagePreview.removeAttribute('src');
+
+          if (!file) {
+            return;
+          }
+
+          const reader = new FileReader();
+
+          reader.addEventListener('load', function () {
+            imagePreview.src = reader.result;
+            previewContainer.hidden = false;
+          });
+
+          reader.readAsDataURL(file);
+        });
+
+      </script>
 
       <p><a href="index.php">View Submission List</a></p>
 

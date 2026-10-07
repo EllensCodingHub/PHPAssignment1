@@ -17,7 +17,7 @@
 
       <p>Error Message: <?php echo $_SESSION["update_error"]; ?> </p>
 
-      <p><a href="index.php">View Contact List</a></p>
+      <p><a href="update_submission_form.php">Return to Submission Form</a></p>
     </main>
 
     <?php include("footer.php"); ?>

@@ -1,5 +1,6 @@
 
 <?php 
+  
   require_once("database.php");
 
   // get data from the form

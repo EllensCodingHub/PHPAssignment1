@@ -61,7 +61,7 @@
         </select><br/>
 
         <label>Upload Agent Photo</label>
-        <input type="file" name="file1"/><br/>
+        <input type="file" name="file1" accept=".jpg, .jpeg, .png, .gif"/><br/>
 
       </div>
 

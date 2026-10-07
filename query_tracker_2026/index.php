@@ -36,6 +36,7 @@
           <th>Status</th>
           <th>Update</th> <!-- for update -->
           <th>&nbsp;</th> <!-- for delete -->
+          <th>&nbsp;</th> <!-- for view details -->
         </tr>
         <?php foreach ($submissions as $submission): ?>
           <tr>
@@ -59,6 +60,20 @@
               <form action="update_submission_form.php" method="post">
                 <input type="hidden" name="submission_id" value="<?php echo $submission["submissionID"]; ?>" />
                 <input type="submit" value="Update" />
+              </form>
+            </td>
+
+             <td>
+              <form action="delete_submission.php" method="post">
+                <input type="hidden" name="submission_id" value="<?php echo $submission["submissionID"]; ?>" />
+                <input type="submit" value="Delete" />
+              </form>
+            </td>
+
+             <td>
+              <form action="submission_details.php" method="post">
+                <input type="hidden" name="submission_id" value="<?php echo $submission["submissionID"]; ?>" />
+                <input type="submit" value="View Details" />
               </form>
             </td>
 

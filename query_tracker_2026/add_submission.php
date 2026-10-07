@@ -18,6 +18,7 @@
   $status = filter_input(INPUT_POST, 'status_id');
 
   require_once("database.php"); // require_once prevents duplicate connections to database
+  
   require_once("image_util.php"); // for image processing functions
 
   $base_dir = './images/';
@@ -44,7 +45,7 @@
 
   if ($agency_name == null || $agent_name == null || $email_address == null || $website_address == null || 
       $phone_number == null) {
-        $_SESSION["add_error"] = "Invalid contact data. Please check all fields and try again.";
+        $_SESSION["add_error"] = "Invalid submission data. Please check all fields and try again.";
         $url = "add_error.php";
         header("Location: " . $url);
         die();
@@ -75,7 +76,7 @@
     // use placeholder
     $placeholder = 'placeholder.jpg';
     $placeholder_100 = 'placeholder_100.jpg';
-    $placeholder_400 = 'placeholder_400';
+    $placeholder_400 = 'placeholder_400.jpg';
 
     if (!file_exists($base_dir . $placeholder_100) || !file_exists($base_dir . $placeholder_400)) {
         process_image($base_dir, $placeholder);
@@ -85,7 +86,7 @@
 
   }
 
-  // add contact
+  // add submission
 
   $query = 'INSERT INTO submissions (submissionDate, submissionID, agencyName, imageName, agentName, emailAddress, 
   websiteAddress, phoneNumber, feedback, statusID)
