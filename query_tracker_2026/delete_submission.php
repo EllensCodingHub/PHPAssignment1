@@ -16,7 +16,7 @@
   $statement->closeCursor();
 
   // delete the submission from the database
-  $queryDelete = 'DELETE * FROM submissions WHERE submissionID = :submission_id';
+  $queryDelete = 'DELETE FROM submissions WHERE submissionID = :submission_id';
 
   $statement = $db->prepare($queryDelete);
   $statement->bindValue(':submission_id', $submission_id);

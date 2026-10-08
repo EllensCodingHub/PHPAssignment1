@@ -81,6 +81,12 @@
         <?php endforeach; ?>
       </table>
 
+      <!-- temporary link to register user form for testing purposes -->
+       <p><a href="register_user_form.php">Register User - Temporary</a></p>
+
+      <!-- temporary link to the login user form for testing purposes -->
+       <p><a href="login_form.php">Login - Temporary</a></p>
+      
       <p><a href="add_submission_form.php">Add Submission</a></p>
       
     </main>

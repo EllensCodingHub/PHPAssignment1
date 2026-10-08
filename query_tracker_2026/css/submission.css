@@ -15,7 +15,7 @@ body {
 }
 .container h2 {
   margin-bottom: 20px;
-  color: #272326;
+  color: #39B82A;
 }
 .submission-image {
   max-width: 100%;
@@ -35,14 +35,14 @@ body {
   display: inline-block;
   margin-top: 25px;
   padding: 10px 16px;
-  background-color: #0077cc;
-  color: #F5F0E6;
+  background-color: #C9974E;
+  color: #272326;
   text-decoration: none;
   border-radius: 6px;
   transition: background-color 0.3 ease;
 }
 .back-link:hover {
-  background-color: #000080;
+  background-color: #39B82A;
 }
 main {
   display: block;
