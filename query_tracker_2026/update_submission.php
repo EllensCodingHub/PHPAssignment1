@@ -1,7 +1,11 @@
 
 <?php 
   session_start();
-
+  
+  if(!isset($_SESSION['isLoggedIn'])) {
+    header("Location: login_form.php");
+    die();
+  }
   // get data from form and assign to variables
   $submission_id = filter_input(INPUT_POST, 'submission_id', FILTER_VALIDATE_INT);
   $submission_date = filter_input(INPUT_POST, 'submission_date');

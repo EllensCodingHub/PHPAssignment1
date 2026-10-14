@@ -1,6 +1,11 @@
 
 <?php 
   session_start();
+  
+  if(!isset($_SESSION['isLoggedIn'])) {
+    header("Location: login_form.php");
+    die();
+  }
 
   require_once("database.php");
 
@@ -16,7 +21,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Submission Tracker - Add Submission</title>
+    <title>Manuscript Submission Tracker - Add Submission</title>
     <link rel="stylesheet" type="text/css" href="css/submission.css" />
   </head>
   <body>

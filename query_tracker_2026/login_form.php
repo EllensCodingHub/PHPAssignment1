@@ -1,48 +1,59 @@
 
-<?php 
-  session_start();
+<?php
+    session_start();
 
-  date_default_timezone_set("America/Halifax");
-
-  // those on Atlantic timezone can use:
-  // date_default_timezone_set("America/Halifax");
-
-  require_once("database.php");
-
-  $user_name = filter_input(INPUT_POST, 'user_name');
-  $user_password = filter_input(INPUT_POST, 'password');
-
-  $queryUsers = 'SELECT * FROM registrations WHERE userName = :userName';
-
-  $statement = $db->prepare($queryUsers);
-  $statement->bindValue(':userName', $user_name);
-  $statement->execute();
-  $user = $statement->fetch();
-  $statement->closeCursor();
-
-  if ($user) { // shorthand for "$user != null"
-    $now = new DateTime(); // gets system current date and time
-    $last_failed = new DateTime($user['lastFailedLogin']);
-
-    $interval = $now->getTimeStamp() - $last_failed->getTimeStamp();
-
-    if ($user['failedAttempts'] >= 3 && $interval < 300) { // 300 seconds / 5 minutes
-      $remaining = 300 - $interval;
-      $_SESSION['login_error'] = "Account locked. Try again in " . ceil($remaining) . " second(s).";
-      header("Location: login_form.php");
-      exit();
-
-    if (password_verify($user_password, $user['password'])) {
-      // more code to come next week
-    }
-    else {
-      // more code to come next week
-    }
-    }
-  else {
-    $_SESSION['login_error'] = "User not found.";
-    header("Location: login_form.php");
-    exit();
-  }
-  }
 ?>
+
+<!DOCTYPE html>
+
+<html>
+
+    <head>
+        <title>Manuscript Submission Tracker - Login</title>
+        <link rel="stylesheet" type="text/css" href="css/submission.css" />
+    </head>
+
+    <body>
+
+        <?php include("header.php"); ?>
+
+        <main>
+            <h2>Login</h2>
+            
+            <?php
+              if (isset($_SESSION['login_error'])) {
+                echo '<p style = "color: #f00; font-weight: bold";>' . htmlspecialchars($_SESSION['login_error']) . '</p>';
+                unset($_SESSION['login_error']);
+              }
+            ?>
+
+            <form action="login.php" method="post" id="login_form">
+
+            <div id="data">
+
+                <label>Username:</label>
+                <input type="text" name="user_name" /><br />
+
+                <label>Password:</label>
+                <input type="password" name="password" /><br />                
+                
+            </div>
+
+            <div id="buttons">
+
+                <label>&nbsp;</label>
+                <input type="submit" value="Login" /><br />
+
+            </div>
+
+            </form>            
+
+            <p><a href="register_user_form.php">Register</a></p>
+
+        </main>
+
+        <?php include("footer.php"); ?>
+
+    </body>
+
+</html>

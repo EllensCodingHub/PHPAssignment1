@@ -1,3 +1,3 @@
 <header>
-  <h1></h1>
+  <h1>Manuscript Submission Tracker</h1>
 </header>

@@ -3,6 +3,8 @@
 
   session_start();
 
+  require_once('message.php');
+
   // get data from form and assign variables
   $user_name = filter_input(INPUT_POST, 'user_name');
   $user_password = filter_input(INPUT_POST, 'password');
@@ -55,6 +57,29 @@
 
   $_SESSION["userName"] = $user_name;
   $_SESSION["isLoggedIn"] = 1;
+
+  // set up email variables . . . this is site administrator sending email to user
+  $to_address = $email_address;
+  $to_name = $user_name;
+  $from_address = 'YOUR_USERNAME@somehost.com'; // host's email address
+  $from_name = 'Manuscript Submission Tracker Admin';
+  $subject = 'Manuscript Submission Tracker - Registration Complete';
+  $body = '<p>Thank you for registering with Manuscript Submission Tracker.</p>' . 
+          '<p>Sincerely,</p>' . 
+          '<p>Manuscript Submission Tracker Admin Team</p>';
+  $is_body_html = true;
+
+  // send email
+  try {
+    send_mail($to_address, $to_name, $from_address, $from_name, $subject, $body, $is_body_html);
+  } 
+  catch (Exception $ex) {
+    //throw $th;
+    $_SESSION["user_error"] = $ex->getMessage();
+        $url = "user_error.php";
+        header("Location: " . $url);
+        die();
+  }
 
   $url = "register_user_confirmation.php";
   header("Location: " . $url);

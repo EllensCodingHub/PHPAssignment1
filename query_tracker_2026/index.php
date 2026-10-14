@@ -1,4 +1,11 @@
 <?php 
+  session_start();
+  
+  if(!isset($_SESSION['isLoggedIn'])) {
+    header("Location: login_form.php");
+    die();
+  }
+  
   require("database.php");
 
   $querySubmissions = 'SELECT s.submissionDate, s.submissionID, s.agencyName, s.imageName, s.agentName, s.emailAddress,
@@ -82,13 +89,19 @@
       </table>
 
       <!-- temporary link to register user form for testing purposes -->
-       <p><a href="register_user_form.php">Register User - Temporary</a></p>
+      <!-- <p><a href="register_user_form.php">Register User</a></p> -->
 
       <!-- temporary link to the login user form for testing purposes -->
-       <p><a href="login_form.php">Login - Temporary</a></p>
+      <!-- <p><a href="login_form.php">Login</a></p> -->
       
       <p><a href="add_submission_form.php">Add Submission</a></p>
       
+      <p><a href="logout.php">Logout</a></p>
+      
+      <p>Welcome, <?php echo $_SESSION["userName"]; ?>! </p>
+      <p>Try to stay positive in those querying trenches. </p>
+      <p>You got this! 💪 </p>
+
     </main>
 
     <?php include("footer.php"); ?>

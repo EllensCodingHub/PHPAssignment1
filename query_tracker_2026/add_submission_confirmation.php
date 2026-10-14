@@ -6,7 +6,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Submission Tracker - Add Submission Confirmation</title>
+    <title>Manuscript Submission Tracker - Add Submission Confirmation</title>
     <link rel="stylesheet" type="text/css" href="css/submission.css"/>
   </head>
   <body>

@@ -17,11 +17,12 @@
         <label>Username:</label>
         <input type="text" name="user_name"/><br/>
         
+        <label>Email:</label>
+        <input type="text" name="email_address"/><br/>
+
         <label>Password:</label>
         <input type="password" name="password"/><br/>
         
-        <label>Email:</label>
-        <input type="text" name="email_address"/><br/>
 
       </div>
 

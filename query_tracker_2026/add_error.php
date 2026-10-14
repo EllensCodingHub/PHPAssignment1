@@ -6,7 +6,7 @@
 
 <html>
   <head>
-    <title>Submission Tracker - Add Error</title>
+    <title>Manuscript Submission Tracker - Add Error</title>
     <link rel="stylesheet" type="text/css" href="css/submission.css" />
   </head>
 
