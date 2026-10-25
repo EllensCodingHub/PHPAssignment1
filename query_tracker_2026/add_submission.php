@@ -89,9 +89,9 @@
   // add submission
 
   $query = 'INSERT INTO submissions (submissionDate, submissionID, agencyName, imageName, agentName, emailAddress, 
-  websiteAddress, phoneNumber, feedback, statusID)
+  websiteAddress, phoneNumber, feedback, statusID, userID)
   VALUES (:submissionDate, :submissionID, :agencyName, :imageName, :agentName, :emailAddress, :websiteAddress,
-  :phoneNumber, :feedback, :statusID)';
+  :phoneNumber, :feedback, :statusID, :userID)';
 
   $statement = $db->prepare($query); // matches 'INSERT INTO' query syntax
 
@@ -105,6 +105,7 @@
   $statement->bindValue(':phoneNumber', $phone_number);
   $statement->bindValue(':feedback', $feedback);
   $statement->bindValue(':statusID', $status);
+  $statement->bindValue(':userID', $_SESSION['userID']);
 
   $statement->execute();
   $statement->closeCursor();

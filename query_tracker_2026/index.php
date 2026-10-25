@@ -9,11 +9,12 @@
   require("database.php");
 
   $querySubmissions = 'SELECT s.submissionDate, s.submissionID, s.agencyName, s.imageName, s.agentName, s.emailAddress,
-  s.websiteAddress, s.phoneNumber, s.feedback, t.statusType
+  s.websiteAddress, s.phoneNumber, s.feedback, s.userID, t.statusType
   FROM submissions s
-  LEFT JOIN status_types t ON s.statusID = t.statusID';
+  LEFT JOIN status_types t ON s.statusID = t.statusID WHERE s.userID = :userID';
 
   $statement = $db->prepare($querySubmissions);
+  $statement->bindValue(':userID', $_SESSION['userID']); 
   $statement->execute();
   $submissions = $statement->fetchAll();
   $statement->closeCursor();
@@ -28,6 +29,13 @@
   </head>
   <body>
     <?php include("header.php"); ?>
+    <p><a href="add_submission_form.php">Add Submission</a></p>
+      
+      <p><a href="logout.php">Logout</a></p>
+      
+      <p>Welcome, <?php echo $_SESSION["userName"]; ?>! </p>
+      <p>Try to stay positive in those querying trenches. </p>
+      <p>You got this! 💪 </p>
     <main id="agentList">
       <h2>Submission List</h2>
       <table>
@@ -94,14 +102,6 @@
       <!-- temporary link to the login user form for testing purposes -->
       <!-- <p><a href="login_form.php">Login</a></p> -->
       
-      <p><a href="add_submission_form.php">Add Submission</a></p>
-      
-      <p><a href="logout.php">Logout</a></p>
-      
-      <p>Welcome, <?php echo $_SESSION["userName"]; ?>! </p>
-      <p>Try to stay positive in those querying trenches. </p>
-      <p>You got this! 💪 </p>
-
     </main>
 
     <?php include("footer.php"); ?>
