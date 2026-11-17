@@ -6,7 +6,7 @@
 
 <html>
   <head>
-    <title>My Books - Add Error</title>
+    <title>Manuscript Submission Tracker - Add Error</title>
     <link rel="stylesheet" type="text/css" href="css/submission.css" />
   </head>
 
@@ -18,8 +18,8 @@
 
       <p>Error Message: <?php echo $_SESSION["add_error"]; ?> </p>
 
-      <p><a href="add_submission_form.php">Add Book</a></p>
-      <p><a href="index.php">View Book Library</a></p>
+      <p><a href="add_submission_form.php">Add Submission</a></p>
+      <p><a href="index.php">View Submission List</a></p>
     </main>
 
     <?php include("footer.php"); ?>

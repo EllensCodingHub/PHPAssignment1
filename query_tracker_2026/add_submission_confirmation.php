@@ -6,7 +6,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>My Book Library - Add New Book</title>
+    <title>Manuscript Submission Tracker - Add Submission Confirmation</title>
     <link rel="stylesheet" type="text/css" href="css/submission.css"/>
   </head>
   <body>
@@ -15,11 +15,12 @@
       <h2>Success!</h2>
         
       <p>
-        Congratulations, <?php echo $_SESSION["userName"]; ?>! Your new book — <?php echo $_SESSION["bookTitle"]; ?> —
-        has been successfully added to your library!
+        Great job, <?php echo $_SESSION["userName"]; ?>! Your most 
+        recent manuscript submission to <?php echo $_SESSION["agentName"]; ?> 
+        has been successfully added to your submission list!
       </p>
 
-      <p><a href="index.php">View Your Library</a></p>
+      <p><a href="index.php">View Submission List</a></p>
 
     </main>
 
